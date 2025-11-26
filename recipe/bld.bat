@@ -12,3 +12,5 @@ if exist NOTICE del NOTICE
 if errorlevel 1 exit /b %errorlevel%
 
 move * %LIBRARY_BIN%
+
+dotnet build-server shutdown >NUL 2>&1 || echo "Warning: dotnet build-server shutdown failed (ignored)"
