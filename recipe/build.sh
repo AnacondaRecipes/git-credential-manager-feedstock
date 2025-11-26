@@ -9,13 +9,18 @@ then
 elif [[ "${target_platform}" == osx-arm64 ]]
 then
   export RUNTIME="osx-arm64"
-elif [[ "${target_platform}" == osx-64 ]]
-then
-  export RUNTIME="osx-x64"
 else
   echo "Unknown target platform: ${target_platform}"
   exit 1
 fi
+
+# Switch to conda-dotnet
+# See src/linux/Packaging.Linux/layout.sh
+export DOTNET_ROOT="$BUILD_PREFIX/lib/dotnet"
+export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
+
+: "${LD_LIBRARY_PATH:=}"
+export LD_LIBRARY_PATH="$PREFIX/lib:$BUILD_PREFIX/lib:$LD_LIBRARY_PATH"
 
 if [[ "${target_platform}" == linux-* ]]
 then
