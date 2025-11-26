@@ -13,7 +13,7 @@ source:
     - 00001-set_linux_runtime.patch
 
 build:
-  skip: true  # [aarch64 or osx or linux]
+  skip: true  # [aarch64]
   number: 0
 
 requirements:
@@ -27,11 +27,11 @@ requirements:
   run:
     - dotnet-runtime =8
 
-# test:
-#   requires:
-#     - git
-#   commands:
-#     - git credential-manager --version  # [not win]
+test:
+  requires:
+    - git
+  commands:
+    - git credential-manager --version
 
 about:
   home: https://github.com/git-ecosystem/git-credential-manager
