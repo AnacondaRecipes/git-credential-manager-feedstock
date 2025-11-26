@@ -17,9 +17,12 @@ else
   exit 1
 fi
 
-export DOTNET_ROOT="$BUILD_PREFIX"
-export PATH="$DOTNET_ROOT/bin:$PATH"
-export LD_LIBRARY_PATH="$PREFIX/lib:$BUILD_PREFIX/lib:${LD_LIBRARY_PATH}"
+# Switch to conda-dotnet
+export DOTNET_ROOT="$BUILD_PREFIX/lib/dotnet"
+export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
+
+: "${LD_LIBRARY_PATH:=}"
+export LD_LIBRARY_PATH="$PREFIX/lib:$BUILD_PREFIX/lib:$LD_LIBRARY_PATH"
 
 if [[ "${target_platform}" == linux-* ]]
 then
