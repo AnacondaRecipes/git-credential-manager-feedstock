@@ -16,8 +16,8 @@ build:
   skip: true  # [aarch64]
   number: 0
 
-  script_env:
-    - CONDA_ALWAYS_COPY=1
+  script_env:                 # [win]
+    - CONDA_ALWAYS_COPY=1     # [win]
 
 requirements:
   build:
@@ -35,6 +35,8 @@ test:
     - git
   commands:
     - git credential-manager --version
+    - taskkill /IM git-credential-manager.exe /F || exit 0  # [win]
+    - taskkill /IM dotnet.exe /F /T || exit 0               # [win]
 
 about:
   home: https://github.com/git-ecosystem/git-credential-manager
