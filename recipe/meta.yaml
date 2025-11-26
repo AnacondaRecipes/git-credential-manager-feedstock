@@ -16,9 +16,6 @@ build:
   skip: true  # [aarch64]
   number: 0
 
-  script_env:                 # [win]
-    - CONDA_ALWAYS_COPY=1     # [win]
-
 requirements:
   build:
     - {{ compiler('cxx') }}  # [linux]
