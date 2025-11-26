@@ -23,7 +23,6 @@ requirements:
     - dotnet =8.0.100
   host:
     - fontconfig  # [linux]
-    - icu         # [linux]
     - zlib  # [aarch64]
   run:
     - dotnet-runtime =8
@@ -33,6 +32,7 @@ test:
     - git
   commands:
     - git credential-manager --version
+    - taskkill /IM dotnet.exe /F || exit 0   # [win]
 
 about:
   home: https://github.com/git-ecosystem/git-credential-manager

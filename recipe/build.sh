@@ -18,6 +18,7 @@ else
 fi
 
 # Switch to conda-dotnet
+# See src/linux/Packaging.Linux/layout.sh
 export DOTNET_ROOT="$BUILD_PREFIX/lib/dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
