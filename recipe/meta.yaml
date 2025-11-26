@@ -16,6 +16,9 @@ build:
   skip: true  # [aarch64]
   number: 0
 
+  script_env:
+    - CONDA_ALWAYS_COPY=1
+
 requirements:
   build:
     - {{ compiler('cxx') }}  # [linux]
@@ -32,7 +35,6 @@ test:
     - git
   commands:
     - git credential-manager --version
-    - taskkill /IM dotnet.exe /F || exit 0   # [win]
 
 about:
   home: https://github.com/git-ecosystem/git-credential-manager
