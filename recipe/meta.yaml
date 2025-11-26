@@ -23,6 +23,7 @@ requirements:
     - dotnet =8.0.100
   host:
     - fontconfig  # [linux]
+    - icu         # [linux]
     - zlib  # [aarch64]
   run:
     - dotnet-runtime =8
