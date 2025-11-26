@@ -9,9 +9,6 @@ then
 elif [[ "${target_platform}" == osx-arm64 ]]
 then
   export RUNTIME="osx-arm64"
-elif [[ "${target_platform}" == osx-64 ]]
-then
-  export RUNTIME="osx-x64"
 else
   echo "Unknown target platform: ${target_platform}"
   exit 1
