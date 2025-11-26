@@ -10,10 +10,9 @@ source:
   sha256: aba0b06b59daa1cd8a16bd9e1ca31a6d9da73e524fe8c045f3acbd0000be1b5e
   patches:
     - 00000-no_self_contained.patch  # [not aarch64 and not arm64]
-    - 00001-set_linux_runtime.patch
+    - 00001-set_linux_runtime.patch  # [linux]
 
 build:
-  skip: true  # [aarch64]
   number: 0
 
 requirements:
