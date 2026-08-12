@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/GitCredentialManager/{{ name }}/archive/v{{ version }}.tar.gz
+  url: https://github.com/git-ecosystem/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 248468dcaf111402892c56d4cbc370dcfc1429976e7abcc1120c49757779be39
   patches:
+    # Keep self-contained on aarch64/arm64 (no shared framework path there).
     - 00000-no_self_contained.patch  # [not aarch64 and not arm64]
-    - 00001-set_linux_runtime.patch  # [linux]
 
 build:
   number: 0
@@ -19,12 +19,14 @@ requirements:
   build:
     - {{ compiler('cxx') }}  # [linux]
     - {{ stdlib("c") }}  # [linux]
-    - dotnet =8.0.100
+    # Upstream 2.8+ targets net10.0; CF uses the same pin. pkgs/main currently
+    # only has dotnet 8.0.100 — bump dotnet-feedstock before this can build.
+    - dotnet =10.0.100
   host:
-    - fontconfig  # [linux]
-    - zlib  # [aarch64]
+    - fontconfig {{ fontconfig }}  # [linux]
+    - zlib {{ zlib }}  # [aarch64]
   run:
-    - dotnet-runtime =8
+    - dotnet-runtime =10
 
 test:
   requires:
@@ -39,6 +41,7 @@ about:
     Secure, cross-platform Git credential storage with authentication to
     GitHub, Azure Repos, and other popular Git hosting services.
   license: MIT
+  license_family: MIT
   license_file:
     - LICENSE
     - NOTICE

@@ -1,10 +1,10 @@
 --- src/linux/Packaging.Linux/layout.sh
 +++ src/linux/Packaging.Linux/layout.sh
-@@ -75,3 +75,3 @@
- 	--runtime="$RUNTIME" \
--	--self-contained \
-+	--no-self-contained \
- 	-p:PublishSingleFile=true \
+@@ -95,3 +95,3 @@
+         --runtime="$RUNTIME" \
+-        --self-contained \
++        --no-self-contained \
+         -p:PublishSingleFile=true \
 --- src/osx/Installer.Mac/layout.sh
 +++ src/osx/Installer.Mac/layout.sh
 @@ -99,3 +99,3 @@
@@ -14,8 +14,8 @@
 	--output="$(make_absolute "$PAYLOAD")" || exit 1
 --- src/windows/Installer.Windows/layout.ps1
 +++ src/windows/Installer.Windows/layout.ps1
-@@ -43,3 +43,4 @@
+@@ -69,3 +69,4 @@
  dotnet publish "$GCM_SRC" `
 +	--no-self-contained `
  	--framework net472 `
- 	--configuration "$CONFIGURATION" `
+ 	--configuration "$Configuration" `
